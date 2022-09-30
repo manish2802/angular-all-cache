@@ -10,11 +10,17 @@ export class ChildComponent implements OnInit, AfterViewInit {
 
   constructor() {}
 
-  ngOnInit() {
-    this.name = 'abc';
+  ngOnInit() {}
+
+  ngOnChange() {
+    console.log(this.name);
   }
 
   ngAfterViewInit(): void {
     console.log(this.name);
+    setTimeout(() => {
+      this.name = 'Ha Ha HA';
+      console.log(this.name);
+    }, 5000);
   }
 }

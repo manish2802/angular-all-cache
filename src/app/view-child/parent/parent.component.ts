@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { ChildComponent } from './child/child.component';
 
 @Component({
@@ -6,16 +13,31 @@ import { ChildComponent } from './child/child.component';
   templateUrl: './parent.component.html',
   styleUrls: ['./parent.component.css'],
 })
-export class ParentComponent implements OnInit, AfterViewInit {
-  name = '';
+export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
+  name = 'ddd';
+  bool = true;
 
   @ViewChild(ChildComponent, { static: false }) child: ChildComponent;
 
-  constructor() {}
+  constructor() {
+    console.log('ParentComponent-constructor');
+  }
+
+  abc() {
+    if (this.bool) {
+      this.bool = false;
+    } else {
+      this.bool = true;
+    }
+  }
 
   ngOnInit() {}
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.child.name = this.name;
+  }
+
   ngAfterViewInit() {
-    console.log('Hello ', this.name);
+    console.log(this.name);
   }
 }
