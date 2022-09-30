@@ -7,6 +7,8 @@ import { ChildComponent } from './child/child.component';
   styleUrls: ['./parent.component.css'],
 })
 export class ParentComponent implements OnInit, AfterViewInit {
+  name = '';
+
   @ViewChild(ChildComponent, { static: false }) child: ChildComponent;
 
   constructor() {}
@@ -14,6 +16,6 @@ export class ParentComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit() {
-    console.log('Hello ', this.child);
+    console.log('Hello ', this.name);
   }
 }
