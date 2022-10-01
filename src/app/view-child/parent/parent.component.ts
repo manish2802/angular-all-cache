@@ -14,7 +14,8 @@ import { ChildComponent } from './child/child.component';
   styleUrls: ['./parent.component.css'],
 })
 export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
-  name = 'ddd';
+  name = 'Test';
+
   bool = true;
 
   @ViewChild(ChildComponent, { static: false }) child: ChildComponent;
@@ -38,6 +39,6 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngAfterViewInit() {
-    console.log(this.name);
+    console.log('ParentComponent View has been intialized ' + this.name);
   }
 }
