@@ -1,7 +1,14 @@
-<p>parent works!</p>
+<div>
+  <p>parent works!</p>
 
-<input [(ngModel)]="name" [disabled]="bool" />
-<button (click)="abc()">OK</button>
-{{ name }}
+  <input [(ngModel)]="name" [disabled]="bool" />
+  <button (click)="abc()">OK</button>
+  <p>{{ name }}</p>
+  <p>{{ chilOutPutData }}</p>
 
-<app-child [name]="name"></app-child>
+  <app-child
+    [childInput]="name"
+    (childOutput)="parentMethod($event)"
+  ></app-child>
+  <div></div>
+</div>
