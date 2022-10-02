@@ -8,3 +8,6 @@ parent -> Child @Input
 child -> Parent @Output
 
 Lifecycle Hook
+
+
+Pipe
