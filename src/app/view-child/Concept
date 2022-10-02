@@ -1,0 +1,10 @@
+
+interpolation 
+property binding
+event binding
+Two way binding
+
+parent -> Child @Input
+child -> Parent @Output
+
+Lifecycle Hook
