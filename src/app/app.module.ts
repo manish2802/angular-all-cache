@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
-import { ParentComponent } from './view-child/parent/parent.component';
-import { ChildComponent } from './view-child/parent/child/child.component';
+import { ParentComponent } from './all-cache/parent/parent.component';
+import { ChildComponent } from './all-cache/parent/child/child.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule],
