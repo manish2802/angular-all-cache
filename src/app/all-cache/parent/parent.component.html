@@ -6,6 +6,9 @@
   <p>{{ name }}</p>
   <p>{{ chilOutPutData }}</p>
 
+  <input [(ngModel)]="pipeInput" />
+  <p>{{ pipeInput | sqrtPipe }}</p>
+
   <app-child
     [childInput]="name"
     (childOutput)="parentMethod($event)"

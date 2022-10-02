@@ -50,5 +50,9 @@ export class ChildComponent implements OnInit, AfterViewInit, OnChanges {
 
   passData() {
     this.childOutput.emit(this.childData);
+    setTimeout(() => {
+      this.childInput = this.childData;
+      console.log('ChildComponent After View intialized: ' + this.childData);
+    }, 5000);
   }
 }
