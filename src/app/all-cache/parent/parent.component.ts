@@ -90,8 +90,8 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   reactiveBuilderSave() {
-    this.preview = JSON.stringify(this.jobFormBuilder.value);
-    console.log(this.preview);
+    this.previewFormBuilder = JSON.stringify(this.jobFormBuilder.value);
+    console.log(this.previewFormBuilder);
   }
 
   get skillsForms() {
