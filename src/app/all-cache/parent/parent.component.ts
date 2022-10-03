@@ -18,6 +18,7 @@ import {
 import { Subscription } from 'rxjs';
 import { ChildComponent } from './child/child.component';
 import { Hero } from './hero';
+import { AddService } from './service/add.service';
 
 @Component({
   selector: 'app-parent',
@@ -50,7 +51,12 @@ export class ParentComponent
   emailSubscription: Subscription;
   formattedMessage: any;
 
-  constructor(private fb: FormBuilder) {
+  num1: number;
+  num2: number;
+  sum: number;
+
+
+  constructor(private fb: FormBuilder,public addserv: AddService) {
     console.log('ParentComponent-constructor');
   }
 
@@ -124,6 +130,10 @@ export class ParentComponent
 
   removeSkillFormGroup(index: number) {
     this.skillsForms.removeAt(index);
+  }
+
+  add(){
+    this.sum=this.addserv.addBoi(this.num1,this.num2);
   }
 
   ngOnDestroy(): void {
