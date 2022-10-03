@@ -77,7 +77,7 @@ export class ParentComponent
   });
   previewFormBuilder: string = '';
 
-  employees$: Observable<Array<any>>;
+  employees$: Observable<Array<Employee[]>>;
 
   //Event Binding
   abc() {
