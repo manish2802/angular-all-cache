@@ -6,8 +6,9 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ChildComponent } from './child/child.component';
+import { Hero } from './hero';
 
 @Component({
   selector: 'app-parent',
@@ -27,7 +28,22 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
 
   @ViewChild(ChildComponent, { static: false }) child: ChildComponent;
 
-  reactiveForm = new FormControl('');
+  //Reactive Form
+  jobForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+  });
+
+  preview: string = '';
+
+  contactForm = new FormGroup({
+    firstname: new FormControl(),
+    lastname: new FormControl(),
+    email: new FormControl(),
+    gender: new FormControl(),
+    isMarried: new FormControl(),
+    country: new FormControl(),
+  });
 
   constructor() {
     console.log('ParentComponent-constructor');
@@ -56,5 +72,10 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
   //Transfer data child to Parent
   parentMethod(data) {
     this.chilOutPutData = data;
+  }
+
+  reactiveFromSave() {
+    this.preview = JSON.stringify(this.jobForm.value);
+    console.log(this.preview);
   }
 }
