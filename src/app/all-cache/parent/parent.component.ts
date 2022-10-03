@@ -36,15 +36,6 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
 
   preview: string = '';
 
-  contactForm = new FormGroup({
-    firstname: new FormControl(),
-    lastname: new FormControl(),
-    email: new FormControl(),
-    gender: new FormControl(),
-    isMarried: new FormControl(),
-    country: new FormControl(),
-  });
-
   constructor() {
     console.log('ParentComponent-constructor');
   }
@@ -74,7 +65,7 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
     this.chilOutPutData = data;
   }
 
-  reactiveFromSave() {
+  reactiveFormSave() {
     this.preview = JSON.stringify(this.jobForm.value);
     console.log(this.preview);
   }
