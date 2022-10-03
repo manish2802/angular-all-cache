@@ -1,6 +1,7 @@
 import {
   AfterViewInit,
   Component,
+  Input,
   OnChanges,
   OnInit,
   SimpleChanges,
@@ -13,6 +14,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { ChildComponent } from './child/child.component';
 import { Hero } from './hero';
 
@@ -35,11 +37,15 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
   @ViewChild(ChildComponent, { static: false }) child: ChildComponent;
 
   //Reactive FormGroup and FormControl
+
   jobForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
   });
   preview: string = '';
+
+  emailSubscription: Subscription;
+  formattedMessage;
 
   constructor(private fb: FormBuilder) {
     console.log('ParentComponent-constructor');
@@ -75,6 +81,12 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
 
   ngAfterViewInit() {
     console.log('ParentComponent View has been intialized ' + this.name);
+    this.emailSubscription = this.jobForm
+      .get('firstName')
+      .valueChanges.subscribe((val) => {
+        this.formattedMessage = `First Name: ${val}.`;
+        console.log(this.formattedMessage);
+      });
   }
 
   //Transfer data child to Parent
