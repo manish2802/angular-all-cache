@@ -6,7 +6,7 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ChildComponent } from './child/child.component';
 import { Hero } from './hero';
 
@@ -42,6 +42,12 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
   jobFormBuilder = this.fb.group({
     firstName: [''],
     lastName: [''],
+    contacts: this.fb.group({
+      contactType: ['-1'],
+      email: [''],
+      phone: [''],
+    }),
+    skills: this.fb.array([]),
   });
   previewFormBuilder: string = '';
 
@@ -70,12 +76,31 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
     this.chilOutPutData = data;
   }
 
+  //
   reactiveFormSave() {
     this.preview = JSON.stringify(this.jobForm.value);
     console.log(this.preview);
   }
+
   reactiveBuilderSave() {
-    this.preview = JSON.stringify(this.jobForm.value);
+    this.preview = JSON.stringify(this.jobFormBuilder.value);
     console.log(this.preview);
+  }
+
+  get skillsForms() {
+    return this.jobFormBuilder.get('skills') as FormArray;
+  }
+
+  addASkillFormGroup() {
+    this.skillsForms.push(
+      this.fb.group({
+        programLanguage: [''],
+        experience: [0],
+      })
+    );
+  }
+
+  removeSkillFormGroup(index: number) {
+    this.skillsForms.removeAt(index);
   }
 }
