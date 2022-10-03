@@ -6,7 +6,13 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ChildComponent } from './child/child.component';
 import { Hero } from './hero';
 
@@ -29,7 +35,7 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
   @ViewChild(ChildComponent, { static: false }) child: ChildComponent;
 
   //Reactive FormGroup and FormControl
-  jobForm = new FormGroup({ 
+  jobForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
   });
@@ -38,9 +44,9 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
   constructor(private fb: FormBuilder) {
     console.log('ParentComponent-constructor');
   }
-  //Reactive FormBuilder 
+  //Reactive FormBuilder
   jobFormBuilder = this.fb.group({
-    firstName: [''],
+    firstName: new FormControl('', [Validators.required]),
     lastName: [''],
     contacts: this.fb.group({
       contactType: ['-1'],
@@ -87,12 +93,9 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
     console.log(this.preview);
   }
 
-
-
   get skillsForms() {
     return this.jobFormBuilder.get('skills') as FormArray;
   }
-
 
   addASkillFormGroup() {
     this.skillsForms.push(
