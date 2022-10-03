@@ -84,7 +84,7 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
     this.emailSubscription = this.jobForm
       .get('firstName')
       .valueChanges.subscribe((val) => {
-        this.formattedMessage = `First Name: ${val}.`;
+        this.formattedMessage = `First Name: ${val}`;
         console.log(this.formattedMessage);
       });
   }
