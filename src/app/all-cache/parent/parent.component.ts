@@ -56,8 +56,6 @@ export class ParentComponent
   num2: number;
   sum: number;
 
-  //employees$: Observable<Array<any>>;
-
   constructor(
     private fb: FormBuilder,
     public addserv: AddService,
@@ -89,9 +87,7 @@ export class ParentComponent
     this.child.save();
   }
 
-  ngOnInit() {
-    console.log(this.employeeService.getEmployees());
-  }
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
     console.log('ParentComponent: ' + changes);
