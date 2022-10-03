@@ -28,8 +28,8 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
 
   @ViewChild(ChildComponent, { static: false }) child: ChildComponent;
 
-  //Reactive Form
-  jobForm = new FormGroup({
+  //Reactive FormGroup and FormControl
+  jobForm = new FormGroup({ 
     firstName: new FormControl(''),
     lastName: new FormControl(''),
   });
@@ -38,7 +38,7 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
   constructor(private fb: FormBuilder) {
     console.log('ParentComponent-constructor');
   }
-
+  //Reactive FormBuilder 
   jobFormBuilder = this.fb.group({
     firstName: [''],
     lastName: [''],
@@ -88,7 +88,7 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
 
-  
+
   get skillsForms() {
     return this.jobFormBuilder.get('skills') as FormArray;
   }
