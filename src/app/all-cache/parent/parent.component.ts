@@ -80,6 +80,7 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
   //Transfer data child to Parent
   parentMethod(data) {
     this.chilOutPutData = data;
+    console.log('ParentComponent: Get data from child ' + data);
   }
 
   //

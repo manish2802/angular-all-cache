@@ -48,7 +48,7 @@ export class ChildComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   passData() {
-    console.log('Pass Data to Parent ' + this.childData);
+    console.log('ChildComponent : Pass Data to Parent ' + this.childData);
     this.childOutput.emit(this.childData);
   }
 }
