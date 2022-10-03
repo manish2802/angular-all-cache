@@ -56,7 +56,7 @@ export class ParentComponent
   num2: number;
   sum: number;
 
-  employees$ : Observable<Array<any>>;
+  employees$ : Observable<Array<any[]>>;
 
 
   constructor(private fb: FormBuilder,public addserv: AddService,private employeeService: EmployeeService) {
