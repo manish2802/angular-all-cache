@@ -6,7 +6,7 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ChildComponent } from './child/child.component';
 import { Hero } from './hero';
 
@@ -33,12 +33,17 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
     firstName: new FormControl(''),
     lastName: new FormControl(''),
   });
-
   preview: string = '';
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
     console.log('ParentComponent-constructor');
   }
+
+  jobFormBuilder = this.fb.group({
+    firstName: [''],
+    lastName: [''],
+  });
+  previewFormBuilder: string = '';
 
   //Event Binding
   abc() {
@@ -66,6 +71,10 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   reactiveFormSave() {
+    this.preview = JSON.stringify(this.jobForm.value);
+    console.log(this.preview);
+  }
+  reactiveBuilderSave() {
     this.preview = JSON.stringify(this.jobForm.value);
     console.log(this.preview);
   }
