@@ -37,10 +37,9 @@ export class ChildComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngAfterViewInit(): void {
-    console.log('ChildComponent After View intialized: ' + this.childInput);
+    console.log('ChildComponent After View intialized: ' + this.childData);
     setTimeout(() => {
-      this.childInput = 'Ha Ha HA';
-      console.log('ChildComponent After View intialized: ' + this.childInput);
+      console.log('ChildComponent After View intialized: ' + this.childData);
     }, 5000);
   }
 
@@ -51,7 +50,6 @@ export class ChildComponent implements OnInit, AfterViewInit, OnChanges {
   passData() {
     this.childOutput.emit(this.childData);
     setTimeout(() => {
-      this.childInput = this.childData;
       console.log('ChildComponent After View intialized: ' + this.childData);
     }, 5000);
   }

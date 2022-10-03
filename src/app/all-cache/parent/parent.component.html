@@ -109,21 +109,20 @@
               </div>
             </div>
           </div>
-          <!--Add Dynamic Feature-->
-         
-            <div class="row">
-              <div class="col col-md-4 offset-md-4">
-                <button
-                  type="button"
-                  (click)="addASkillFormGroup()"
-                  class="btn btn-primary">
-                
-                  Add A Skill
-                </button>
-              </div>
-            </div>
-          
+
           <!--Dynamic Form Buidling-->
+
+          <div class="row">
+            <div class="col col-md-4 offset-md-4">
+              <button
+                type="button"
+                (click)="addASkillFormGroup()"
+                class="btn btn-primary"
+              >
+                Add A Skill
+              </button>
+            </div>
+          </div>
           <div>
             <ng-container formArrayName="skills">
               <ng-container
