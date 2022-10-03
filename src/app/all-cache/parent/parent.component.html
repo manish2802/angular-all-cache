@@ -6,7 +6,8 @@
   <p>{{ name }}</p>
   <p>{{ chilOutPutData }}</p>
 
-  <p>{{ pipeInput  }}</p>
+  <input [(ngModel)]="pipeInput" />
+  <p>{{ pipeInput | sqrt }}</p>
 
   <app-child
     [childInput]="name"
