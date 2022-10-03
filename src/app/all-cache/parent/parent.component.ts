@@ -22,7 +22,7 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
 
   chilOutPutData: string = 'ChilOutPutData';
 
-  pipeInput: string = '121';
+  pipeInput: number = 121;
 
   @ViewChild(ChildComponent, { static: false }) child: ChildComponent;
 
