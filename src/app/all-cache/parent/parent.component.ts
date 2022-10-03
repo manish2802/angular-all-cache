@@ -15,10 +15,11 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ChildComponent } from './child/child.component';
 import { Hero } from './hero';
 import { AddService } from './service/add.service';
+import { EmployeeService } from './service/employee.service';
 
 @Component({
   selector: 'app-parent',
@@ -55,8 +56,10 @@ export class ParentComponent
   num2: number;
   sum: number;
 
+  employees$ : Observable<Array<any>>;
 
-  constructor(private fb: FormBuilder,public addserv: AddService) {
+
+  constructor(private fb: FormBuilder,public addserv: AddService,private employeeService: EmployeeService) {
     console.log('ParentComponent-constructor');
   }
 
@@ -83,7 +86,9 @@ export class ParentComponent
     this.child.save();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.employees$ = this.employeeService.getEmployees();
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     console.log('ParentComponent: ' + changes);
