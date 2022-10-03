@@ -17,7 +17,6 @@ import {
 } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { ChildComponent } from './child/child.component';
-import { Hero } from './hero';
 import { AddService } from './service/add.service';
 import { EmployeeService } from './service/employee.service';
 
@@ -77,7 +76,7 @@ export class ParentComponent
   });
   previewFormBuilder: string = '';
 
-  employees$: Observable<Array<Employee[]>>;
+  employees$: Observable<Array<any>>;
 
   //Event Binding
   abc() {
