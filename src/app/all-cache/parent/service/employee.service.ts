@@ -6,6 +6,6 @@ export class EmployeeService {
   constructor(private http: HttpClient) {}
 
   getEmployees() {
-    return this.http.get<any[]>('/assets/employees.json');
+    return this.http.get<any[]>('assets/employees.json');
   }
 }
