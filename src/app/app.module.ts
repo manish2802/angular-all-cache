@@ -9,6 +9,7 @@ import { ChildComponent } from './all-cache/parent/child/child.component';
 import { SqrtPipe } from './all-cache/parent/pipe/sqrt-pipe.pipe';
 import { AddService } from './all-cache/parent/service/add.service';
 import { EmployeeService } from './all-cache/parent/service/employee.service';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule],
@@ -19,7 +20,7 @@ import { EmployeeService } from './all-cache/parent/service/employee.service';
     ChildComponent,
     SqrtPipe,
   ],
-  providers: [AddService, EmployeeService],
+  providers: [AddService, EmployeeService, HttpClient],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
