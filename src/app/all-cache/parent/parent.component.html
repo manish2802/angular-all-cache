@@ -122,47 +122,50 @@
               </div>
             </div>
           </div>
+          <!--Dynamic Form Buidling-->
           <div>
-            <ng-container
-              *ngFor="let skillForm of skillsForms.controls; let i = index"
-            >
-              <div class="row" [formGroupName]="i">
-                <div class="col col-md-5">
-                  <div class="mb-3">
-                    <label [for]="'programLanguage' + i" class="form-label"
-                      >Programing Language</label
+            <ng-container formArrayName="skills">
+              <ng-container
+                *ngFor="let skillForm of skillsForms.controls; let i = index"
+              >
+                <div class="row" [formGroupName]="i">
+                  <div class="col col-md-5">
+                    <div class="mb-3">
+                      <label [for]="'programLanguage' + i" class="form-label"
+                        >Programing Language</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        [id]="'programLanguage' + i"
+                        formControlName="programLanguage"
+                      />
+                    </div>
+                  </div>
+                  <div class="col col-md-5">
+                    <div class="mb-3">
+                      <label [for]="'experience' + i" class="form-label"
+                        >Experience</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        [id]="'experience' + i"
+                        formControlName="experience"
+                      />
+                    </div>
+                  </div>
+                  <div class="col col md-2">
+                    <button
+                      class="btn btn-danger mt-4"
+                      type="button"
+                      (click)="removeSkillFormGroup(i)"
                     >
-                    <input
-                      type="text"
-                      class="form-control"
-                      [id]="'programLanguage' + i"
-                      formControlName="programLanguage"
-                    />
+                      Delete
+                    </button>
                   </div>
                 </div>
-                <div class="col col-md-5">
-                  <div class="mb-3">
-                    <label [for]="'experience' + i" class="form-label"
-                      >Experience</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      [id]="'experience' + i"
-                      formControlName="experience"
-                    />
-                  </div>
-                </div>
-                <div class="col col md-2">
-                  <button
-                    class="btn btn-danger mt-4"
-                    type="button"
-                    (click)="removeSkillFormGroup(i)"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
+              </ng-container>
             </ng-container>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
