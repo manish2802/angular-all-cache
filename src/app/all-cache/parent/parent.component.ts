@@ -3,6 +3,7 @@ import {
   Component,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   SimpleChanges,
   ViewChild,
@@ -23,7 +24,7 @@ import { Hero } from './hero';
   templateUrl: './parent.component.html',
   styleUrls: ['./parent.component.css'],
 })
-export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
+export class ParentComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy{
   //Interplation and two way binding  {} and [(ngModel)]
   name = 'Test';
 
@@ -50,6 +51,7 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
   constructor(private fb: FormBuilder) {
     console.log('ParentComponent-constructor');
   }
+
   //Reactive FormBuilder
   jobFormBuilder = this.fb.group({
     firstName: new FormControl('', [Validators.required]),
@@ -123,4 +125,9 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
   removeSkillFormGroup(index: number) {
     this.skillsForms.removeAt(index);
   }
+
+  ngOnDestroy(): void {
+    this.emailSubscription.unsubscribe();
+  }
+    
 }
