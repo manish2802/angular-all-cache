@@ -24,7 +24,9 @@ import { Hero } from './hero';
   templateUrl: './parent.component.html',
   styleUrls: ['./parent.component.css'],
 })
-export class ParentComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy{
+export class ParentComponent
+  implements OnInit, AfterViewInit, OnChanges, OnDestroy
+{
   //Interplation and two way binding  {} and [(ngModel)]
   name = 'Test';
 
@@ -46,7 +48,7 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges, OnDest
   preview: string = '';
 
   emailSubscription: Subscription;
-  formattedMessage;
+  formattedMessage: any;
 
   constructor(private fb: FormBuilder) {
     console.log('ParentComponent-constructor');
@@ -83,12 +85,10 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges, OnDest
 
   ngAfterViewInit() {
     console.log('ParentComponent View has been intialized ' + this.name);
-    this.emailSubscription = this.jobForm
-      .get('firstName')
-      .valueChanges.subscribe((val) => {
-        this.formattedMessage = `First Name: ${val}`;
-        console.log(this.formattedMessage);
-      });
+    this.emailSubscription = this.jobForm.valueChanges.subscribe((val) => {
+      this.formattedMessage = val;
+      console.log(this.formattedMessage);
+    });
   }
 
   //Transfer data child to Parent
@@ -129,5 +129,4 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges, OnDest
   ngOnDestroy(): void {
     this.emailSubscription.unsubscribe();
   }
-    
 }
