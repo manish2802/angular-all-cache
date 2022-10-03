@@ -87,9 +87,12 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
     console.log(this.preview);
   }
 
+
+  
   get skillsForms() {
     return this.jobFormBuilder.get('skills') as FormArray;
   }
+
 
   addASkillFormGroup() {
     this.skillsForms.push(
