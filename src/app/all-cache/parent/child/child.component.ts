@@ -28,7 +28,7 @@ export class ChildComponent implements OnInit, AfterViewInit, OnChanges {
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('ChildComponent ngOnChanges' + changes);
+    console.log('ChildComponent ngOnChanges ' + changes);
 
     setTimeout(() => {
       this.childInput = 'Ha Ha HA';
@@ -48,9 +48,7 @@ export class ChildComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   passData() {
+    console.log('Pass Data to Parent ' + this.childData);
     this.childOutput.emit(this.childData);
-    setTimeout(() => {
-      console.log('ChildComponent After View intialized: ' + this.childData);
-    }, 5000);
   }
 }
