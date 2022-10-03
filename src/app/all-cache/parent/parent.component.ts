@@ -77,6 +77,8 @@ export class ParentComponent
   });
   previewFormBuilder: string = '';
 
+  employees$: Observable<Array<any>>;
+
   //Event Binding
   abc() {
     if (this.bool) {
