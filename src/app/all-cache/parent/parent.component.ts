@@ -6,6 +6,7 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ChildComponent } from './child/child.component';
 
 @Component({
@@ -25,6 +26,8 @@ export class ParentComponent implements OnInit, AfterViewInit, OnChanges {
   pipeInput: number = 121;
 
   @ViewChild(ChildComponent, { static: false }) child: ChildComponent;
+
+  reactiveForm = new FormControl('');
 
   constructor() {
     console.log('ParentComponent-constructor');

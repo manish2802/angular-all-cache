@@ -9,6 +9,8 @@
   <input [(ngModel)]="pipeInput" />
   <p>{{ pipeInput | sqrt }}</p>
 
+  <input type="text" [formControl]="reactiveForm" />
+
   <app-child
     [childInput]="name"
     (childOutput)="parentMethod($event)"
