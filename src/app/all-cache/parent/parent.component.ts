@@ -56,10 +56,13 @@ export class ParentComponent
   num2: number;
   sum: number;
 
-  employees$ : Observable<Array<any[]>>;
+  //employees$: Observable<Array<any>>;
 
-
-  constructor(private fb: FormBuilder,public addserv: AddService,private employeeService: EmployeeService) {
+  constructor(
+    private fb: FormBuilder,
+    public addserv: AddService,
+    private employeeService: EmployeeService
+  ) {
     console.log('ParentComponent-constructor');
   }
 
@@ -87,7 +90,7 @@ export class ParentComponent
   }
 
   ngOnInit() {
-    this.employees$ = this.employeeService.getEmployees();
+    console.log(this.employeeService.getEmployees());
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -137,8 +140,8 @@ export class ParentComponent
     this.skillsForms.removeAt(index);
   }
 
-  add(){
-    this.sum=this.addserv.addBoi(this.num1,this.num2);
+  add() {
+    this.sum = this.addserv.addBoi(this.num1, this.num2);
   }
 
   ngOnDestroy(): void {
