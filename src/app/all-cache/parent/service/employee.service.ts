@@ -6,6 +6,8 @@ export class EmployeeService {
   constructor(private http: HttpClient) {}
 
   getEmployees() {
-    return this.http.get<any[]>('assets/employees.json');
+    return this.http.get<any[]>(
+      'https://dummy.restapiexample.com/api/v1/employees'
+    );
   }
 }

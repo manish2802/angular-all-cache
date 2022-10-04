@@ -88,9 +88,7 @@ export class ParentComponent
     this.child.save();
   }
 
-  ngOnInit() {
-    this.employees$ = this.employeeService.getEmployees();
-  }
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
     console.log('ParentComponent: ' + changes);
