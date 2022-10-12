@@ -19,5 +19,5 @@ Service
 Directive:
  
  Structural : *ngIf,*ngFor
- <ng-template>< </ng-template>>
+ <ng-template>< </ng-template>
 
