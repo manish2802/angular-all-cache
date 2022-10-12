@@ -15,3 +15,9 @@ Pipe
 Form: Reactive
 
 Service
+
+Directive:
+ 
+ Structural : *ngIf,*ngFor
+ <ng-template>< </ng-template>>
+
