@@ -18,6 +18,7 @@ import {
 import { Observable, Subscription } from 'rxjs';
 import { ChildComponent } from './child/child.component';
 import { AddService } from './service/add.service';
+import { Employee } from './service/employee';
 import { EmployeeService } from './service/employee.service';
 
 @Component({
@@ -76,7 +77,7 @@ export class ParentComponent
   });
   previewFormBuilder: string = '';
 
-  employees$: any;
+  employees$: any[];
 
   //Event Binding
   abc() {
