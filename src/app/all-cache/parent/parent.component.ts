@@ -76,7 +76,7 @@ export class ParentComponent
   });
   previewFormBuilder: string = '';
 
-  employees$: Observable<Array<any>>;
+  employees$: any;
 
   //Event Binding
   abc() {
@@ -88,7 +88,11 @@ export class ParentComponent
     this.child.save();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.employeeService.getEmployees().subscribe((res) => {
+      this.employees$ = res;
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     console.log('ParentComponent: ' + changes);
