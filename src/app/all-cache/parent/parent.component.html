@@ -1,9 +1,9 @@
 <div>
   <p>parent works!</p>
 
-  <input [(ngModel)]="name" [disabled]="bool" />
+  <input [(ngModel)]="name" [disabled]="bool" #obj />
   <button (click)="abc()">OK</button>
-  <p>{{ name }}</p>
+  <p>{{ name }} {{obj.value}}</p>
 
   <p>EventEmitter : {{ chilOutPutData }}</p>
 
@@ -231,20 +231,25 @@
     </div>
   </div>
 
+
+  <div>Custom observer : {{customObserver | json }}</div>
+
   <p>Employee List</p>
   <table border="1">
     <thead>
       <th>S. No.</th>
       <th>Employee ID</th>
       <th>Name</th>
+      <th>Salary</th>
       <th>Actions</th>
     </thead>
     <tbody>
-      <ng-container *ngIf="employees$ | async as employees; else elseBlock">
-        <tr *ngFor="let employee of employees | async; let i = index">
+      <ng-container *ngIf="employees$ | async ; else elseBlock">
+        <tr *ngFor="let employee of employees$ | async; let i = index">
           <td>{{ i + 1 }}</td>
           <td>{{ employee.id }}</td>
           <td>{{ employee.employee_name }}</td>
+          <td>{{ employee.employee_salary  }}</td>
           <td>Edit</td>
         </tr>
       </ng-container>
@@ -255,6 +260,9 @@
       </ng-template>
     </tbody>
   </table>
+
+
+  <div><code>observable|async</code>: Time: {{ time |async  }}</div>
 
   <app-child
     [childInput]="name"

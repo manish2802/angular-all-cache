@@ -15,7 +15,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Observer, Subscription } from 'rxjs';
 import { ChildComponent } from './child/child.component';
 import { AddService } from './service/add.service';
 import { Employee } from './service/employee';
@@ -77,7 +77,14 @@ export class ParentComponent
   });
   previewFormBuilder: string = '';
 
-  employees$: any[];
+  customObserver: any;
+  employees: Employee[];
+  employees$:Observable<Employee[]>;
+  emp:Subscription ;
+
+  time = new Observable<string>((observer: Observer<string>) => {
+    setInterval(() => observer.next(new Date().toString()), 1000);
+  });
 
   //Event Binding
   abc() {
@@ -90,9 +97,18 @@ export class ParentComponent
   }
 
   ngOnInit() {
-    this.employeeService.getEmployees().subscribe((res) => {
-      this.employees$ = res;
+   // this.employeeService.getEmployees().subscribe((res) => {
+    // this.employees = res;
+    //});
+   
+    setInterval(()=>{
+      this.employees$= this.employeeService.getEmployees()
+    },5000);
+    
+    this.emp = this.employeeService.coustomObservable().subscribe( res=>{
+      this.customObserver = res;
     });
+   
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -147,6 +163,8 @@ export class ParentComponent
   }
 
   ngOnDestroy(): void {
+    console.log('ngOnDestroy');
     this.emailSubscription.unsubscribe();
+    this.emp.unsubscribe();
   }
 }
